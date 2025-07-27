@@ -30,3 +30,24 @@ Here, `sol` is an object of the `Solution` class.
 **In short:**  
 Every time you create an object with `new`, you are creating a new instance of that class.  
 So, **every object is an instance, and every instance is an object.**
+
+
+
+# Why does printing an array in Java show something like `[I@15db9742`?
+
+When you try to print an array directly in Java using:
+
+
+what gets printed is **not the contents of the array**, but rather the **object reference string** (something like `[I@15db9742`). This happens because:
+
+- Arrays in Java do **not override** the `toString()` method from the base `Object` class.
+- The default `toString()` implementation prints the class name (`[I` for int arrays) and the object's hashcode in hexadecimal (e.g. `@15db9742`).
+
+---
+
+## How to properly print array contents?
+
+To print the elements of an array in a human-readable way, use:
+
+import java.util.Arrays;
+System.out.println(Arrays.toString(array));
